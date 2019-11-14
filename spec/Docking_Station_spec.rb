@@ -31,10 +31,11 @@ describe "DockingStation" do
     it "responds to the see method" do
       expect(DockingStation.new).to respond_to(:see)
   end
-    # it "the bike" do
-    #   docking_station = DockingStation.new
-    #   bike = Bike.new
-    #   expect(docking_station.see(bike)).to eq(bike)
-    # end
+    it "the bike" do
+      docking_station = DockingStation.new
+      bike = Bike.new
+      docking_station.dock(bike)
+      expect(docking_station.see).to eq(bike)
+    end
 end
 end

@@ -9,7 +9,7 @@ class DockingStation
     @bike = bike
   end
 
-  def see(bike)
+  def see
     @bike
   end
 end
