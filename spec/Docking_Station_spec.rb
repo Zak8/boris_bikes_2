@@ -12,4 +12,8 @@ describe "DockingStation" do
 
   it { expect(Bike.new).to respond_to(:working?) }
 
+  it "should expect" do
+    expect(DockingStation.new).to respond_to(:docking_station)
+  end
+
 end
