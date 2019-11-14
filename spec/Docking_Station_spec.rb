@@ -21,18 +21,20 @@ describe "DockingStation" do
     it "takes 1 argument" do
       expect(DockingStation.new).to respond_to(:dock).with(1).argument
     end
+    it "should dock the bike" do
+      docking_station = DockingStation.new
+      bike = Bike.new
+      expect(docking_station.dock(bike)).to eq bike
+    end
   end
   describe "#see" do
     it "responds to the see method" do
       expect(DockingStation.new).to respond_to(:see)
   end
-    it "takes 1 argument" do
-      expect(DockingStation.new).to respond_to(:see).with(1).argument
-    end
-    it "the bike" do
-      docking_station = DockingStation.new
-      bike = docking_station.release_bike
-      expect(docking_station.see(bike)).to eq(bike)
-    end
+    # it "the bike" do
+    #   docking_station = DockingStation.new
+    #   bike = Bike.new
+    #   expect(docking_station.see(bike)).to eq(bike)
+    # end
 end
 end
