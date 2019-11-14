@@ -1,13 +1,14 @@
-require 'bike'
-
 class DockingStation
 
   def release_bike
     Bike.new
   end
 
-  def docking_station
-
+  def dock(bike)
+  
   end
 
+  def see(bike)
+    bike
+  end
 end

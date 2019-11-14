@@ -1,4 +1,4 @@
-require "Docking_Station"
+require "docking"
 require "bike"
 
 describe "DockingStation" do
@@ -6,14 +6,33 @@ describe "DockingStation" do
     expect(DockingStation.new).to be_instance_of DockingStation
   end
 
-  it { expect(DockingStation.new).to respond_to(:release_bike) }
-
-  it { expect(DockingStation.new.release_bike).to be_instance_of Bike }
-
-  it { expect(Bike.new).to respond_to(:working?) }
-
-  it "should expect" do
-    expect(DockingStation.new).to respond_to(:docking_station)
+  describe "#release_bike" do
+    it "responds to the release_bike method" do
+      expect(DockingStation.new).to respond_to(:release_bike)
+    end
+    it "returns a bike object" do
+        expect(DockingStation.new.release_bike).to be_instance_of Bike
+    end
   end
-
+  describe "#dock" do
+    it "responds to the dock method" do
+      expect(DockingStation.new).to respond_to(:dock)
+    end
+    it "takes 1 argument" do
+      expect(DockingStation.new).to respond_to(:dock).with(1).argument
+    end
+  end
+  describe "#see" do
+    it "responds to the see method" do
+      expect(DockingStation.new).to respond_to(:see)
+  end
+    it "takes 1 argument" do
+      expect(DockingStation.new).to respond_to(:see).with(1).argument
+    end
+    it "the bike" do
+      docking_station = DockingStation.new
+      bike = docking_station.release_bike
+      expect(docking_station.see(bike)).to eq(bike)
+    end
+end
 end
