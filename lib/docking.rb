@@ -1,16 +1,25 @@
 class DockingStation
   attr_reader :bike
 
-  def release_bike(amount_of_bikes)
-    Bike.new if amount_of_bikes > 0
+  def release_bike
+    if @_more_bikes == nil
+      raise "There are no bikes to be release."
     else
+      bike = @bike
+      @more_bikes = nil
+      bike
+    end
   end
 
   def dock(bike)
-    @bike = bike
+    if @more_bikes
+      raise "There is already one bike in the station."
+    else
+      @more_bikes = bike
+    end
   end
 
   def see
-    @bike
+    @more_bikes
   end
 end
