@@ -48,19 +48,20 @@ describe "DockingStation" do
       expect(docking_station.dock(bike)).to eq bike
     end
 
-    it "throw an error there is already one bike in station" do
-      docking_station = DockingStation.new
-      bike = Bike.new
-      docking_station.dock(bike)
-      bikeTwo = Bike.new
-      expect{docking_station.dock(bikeTwo)}.to raise_error("There is already one bike in the station.")
-    end
-
     it "Should allow the docking of 20 bikes." do
       docking_station = DockingStation.new
       bike = Bike.new
-      expect {20.times {docking_station.dock Bike.new}}.to eq 20
+      (20.times {docking_station.dock Bike.new})
+      expect (docking_station.see.length == docking_station.DEFAULT_CAPACITY)
     end
+
+    it "throw an error there is already 20 bikes in the array" do
+      docking_station = DockingStation.new
+      20.times {docking_station.dock(Bike.new)}
+      bikeTwo = Bike.new
+      expect{docking_station.dock(bikeTwo)}.to raise_error("There can't be more than 20 bikes in the array.")
+    end
+
   end
   describe "#see" do
     it "responds to the see method" do
@@ -70,7 +71,7 @@ describe "DockingStation" do
       docking_station = DockingStation.new
       bike = Bike.new
       docking_station.dock(bike)
-      expect(docking_station.see).to eq(bike)
+      expect(docking_station.see).to eq([bike])
     end
 end
 end
